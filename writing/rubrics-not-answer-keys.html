@@ -32,12 +32,12 @@
   a { color: var(--blue); }
   a:hover { color: var(--blue-dark); }
   a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--pad); }
+  .wrap { max-width: 1600px; margin: 0 auto; padding: 0 var(--pad); }
 
   /* Top bar */
   .top { border-bottom: 1px solid var(--rule); }
   .top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; padding-bottom: 28px; gap: 16px; }
-  .wordmark { font-family: 'Anton', Impact, sans-serif; font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; }
+  .wordmark { font-family: 'Anton', Impact, sans-serif; font-size: 33px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
   .btn { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
   .btn-blue { padding: 14px 24px; background: var(--blue); color: #FFFFFF; }
   .btn-blue:hover { background: var(--blue-dark); color: #FFFFFF; }
@@ -81,7 +81,7 @@
   @media (max-width: 860px) {
     :root { --pad: 20px; }
     .top .wrap { padding-top: 16px; padding-bottom: 16px; }
-    .wordmark { font-size: 16px; }
+    .wordmark { font-size: 22px; }
     .btn-blue { padding: 15px 18px; font-size: 11px; }
     .hero .wrap { padding-top: 44px; padding-bottom: 40px; gap: 28px; }
     .hero h1 { font-size: calc((100vw - 40px) / 5.6); line-height: 1.02; }
