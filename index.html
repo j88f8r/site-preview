@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaafar El Tassa · School Psychologist</title>
+<meta name="description" content="Jaafar El Tassa: school psychologist in San Francisco, building and testing AI tools for kids' safety and privacy.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jaafar El Tassa · School Psychologist">
+<meta property="og:description" content="School psychologist and AI builder in San Francisco.">
+<meta name="theme-color" content="#3D39AC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%233D39AC'/%3E%3Cpath d='M38 14v26c0 7-4 11-11 11-3 0-6-1-8-2l2-6c2 1 4 1 5 1 3 0 4-2 4-5V14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts.css">
+<style>
+  :root {
+    --blue: #3D39AC;
+    --blue-dark: #302D86;
+    --ink: #0A0A0A;
+    --body: #262626;
+    --muted: #5A5A5A;
+    --faint: #6A6A6A;
+    --rule: #E4E4E4;
+    --paper: #FFFFFF;
+    --footer: #F4F4F4;
+    --pad: 56px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  a { color: var(--blue); }
+  a:hover { color: var(--blue-dark); }
+  a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--pad); }
+
+  /* Top bar */
+  .top { border-bottom: 1px solid var(--rule); }
+  .top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; padding-bottom: 28px; gap: 16px; }
+  .wordmark { font-family: 'Anton', Impact, sans-serif; font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; }
+  .btn { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+  .btn-blue { padding: 14px 24px; background: var(--blue); color: #FFFFFF; }
+  .btn-blue:hover { background: var(--blue-dark); color: #FFFFFF; }
+  .btn-solid { padding: 14px 24px; background: var(--blue); color: #FFFFFF; }
+  .btn-solid:hover { background: var(--blue-dark); color: #FFFFFF; }
+
+  /* Banner */
+  .hero { background: var(--blue); color: #FFFFFF; }
+  .hero .wrap { padding-top: 84px; padding-bottom: 76px; display: flex; flex-direction: column; gap: 40px; }
+  .hero h1 { margin: 0; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: min(180px, calc((100vw - 112px) / 5.6)); line-height: 1.02; letter-spacing: 0.005em; text-transform: uppercase; }
+  .hero p { margin: 0; max-width: 800px; font-size: 21px; line-height: 1.6; color: #E4E3F5; border-top: 1px solid #7A77C5; padding-top: 32px; }
+
+  /* Sections */
+  .block { padding-top: 52px; }
+  .block:first-child { padding-top: 76px; }
+  .block-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 16px; }
+  .block-head h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .block-head span { font-size: 14px; font-weight: 500; color: var(--faint); }
+
+  /* Entries */
+  .entry { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; padding: 46px 0; border-bottom: 1px solid var(--rule); }
+  .entry:last-child { border-bottom: 0; }
+  .when { grid-column: span 2; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; color: var(--faint); }
+  .when.current { color: var(--blue); }
+  .role { grid-column: span 4; padding-right: 24px; }
+  .role h3 { margin: 0 0 10px; font-size: 27px; font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; }
+  .org { margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); }
+  .points { grid-column: span 6; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; font-size: 19px; line-height: 1.62; color: var(--body); }
+  .points strong { font-weight: 700; color: var(--ink); }
+
+  /* Contact */
+  .contact { margin-top: 40px; background: var(--footer); }
+  .contact .wrap { padding-top: 64px; padding-bottom: 64px; display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+  .talk { margin: 0; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 82px; line-height: 0.92; letter-spacing: 0.01em; text-transform: uppercase; color: var(--blue); }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; align-items: flex-end; }
+  .email { font-size: 23px; font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--blue); padding-bottom: 4px; }
+  .meta { margin-top: 8px; font-size: 16px; color: var(--muted); }
+  .note { font-size: 14px; color: var(--muted); }
+
+  /* Phone and narrow tablet */
+  @media (max-width: 860px) {
+    :root { --pad: 20px; }
+    .top .wrap { padding-top: 16px; padding-bottom: 16px; }
+    .wordmark { font-size: 16px; }
+    .btn-blue { padding: 15px 18px; font-size: 11px; }
+    .hero .wrap { padding-top: 44px; padding-bottom: 40px; gap: 28px; }
+    .hero h1 { font-size: calc((100vw - 40px) / 5.6); line-height: 1.02; }
+    .hero p { font-size: 18px; padding-top: 24px; }
+    .block, .block:first-child { padding-top: 40px; }
+    .block + .block { padding-top: 28px; }
+    .block-head { padding-bottom: 12px; }
+    .block-head h2 { font-size: 17px; }
+    .block-head span { display: none; }
+    .entry { display: flex; flex-direction: column; gap: 12px; padding: 30px 0; }
+    .when { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .role { padding-right: 0; }
+    .role h3 { font-size: 24px; margin-bottom: 12px; }
+    .org { font-size: 15px; }
+    .points { gap: 14px; font-size: 17px; margin-top: 6px; }
+    .contact .wrap { flex-direction: column; align-items: stretch; gap: 20px; padding-top: 40px; padding-bottom: 40px; }
+    .talk { font-size: 52px; }
+    .talk br { display: none; }
+    .contact-links { align-items: flex-start; gap: 20px; }
+    .email { font-size: 18px; }
+    .btn-solid { align-self: stretch; text-align: center; font-size: 12px; padding: 17px 20px; }
+    .meta { margin-top: 0; font-size: 15px; }
+  }
+
+  /* ---- Added for the new sections (same tokens as above) ---- */
+  .hero p strong { color: #FFFFFF; font-weight: 600; }
+  .hero a { color: #FFFFFF; }
+  .hero a:hover { color: #E4E3F5; }
+  .hero .btn-ghost { align-self: flex-start; margin-top: -8px; padding: 14px 24px; border: 2px solid #FFFFFF; color: #FFFFFF; }
+  .hero .btn-ghost:hover { background: #FFFFFF; color: var(--blue); }
+  .creds { font-size: 16px; line-height: 1.5; color: var(--muted); text-align: right; }
+  @media (max-width: 860px) {
+    .creds { font-size: 15px; text-align: left; }
+    .block-head { flex-wrap: wrap; row-gap: 6px; }
+    .block-head span.keep { display: block; width: 100%; font-size: 13px; }
+    .hero .btn-ghost { align-self: stretch; margin-top: -4px; text-align: center; font-size: 12px; padding: 15px 20px; }
+  }
+  /* ---- Hero inkblot v9 (hero-ink-v9.js + fallback videos) ---- */
+  .hero { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(90deg, #302D86, #3D39AC); }
+  .hero-bg { position: absolute; z-index: -1; pointer-events: none; display: block; }
+  /* No-JS / pre-JS defaults. hero-ink-v9.js then positions the active video exactly where the live blot goes
+     and replaces these masks with a per-text-line mask (also applied to the poster). */
+  .hero-bg-d { top: 0; right: 0; width: 100%; height: 100%; object-fit: cover; object-position: 100% 0%;
+    -webkit-mask-image: linear-gradient(90deg, transparent calc(100% - 330px), #000 calc(100% - 170px));
+            mask-image: linear-gradient(90deg, transparent calc(100% - 330px), #000 calc(100% - 170px)); }
+  .hero-bg-m { display: none; }
+  @media (max-width: 860px) {
+    .hero { background: #3D39AC; }
+    .hero .wrap { padding-top: calc(min(100vw, 560px) * 0.359); }   /* top zone for the blot: 140 px at 390 px wide */
+    .hero-bg-d { display: none; }
+    .hero-bg-m { display: block; top: 0; right: 0; width: min(100%, 560px); height: auto; aspect-ratio: 1080 / 1152;
+      -webkit-mask-image: linear-gradient(#000 30%, rgba(0,0,0,.3) 35%, rgba(0,0,0,.3) 62%, transparent 70%);
+              mask-image: linear-gradient(#000 30%, rgba(0,0,0,.3) 35%, rgba(0,0,0,.3) 62%, transparent 70%); }
+  }
+  .hero-ink { opacity: 0; transition: opacity .8s ease; }
+  .hero-ink.on { opacity: 1; }
+  .ink-live video.hero-bg { visibility: hidden; }
+  /* ------------------------------------------------------------- */
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="wordmark">Jaafar El Tassa</span>
+    <a class="btn btn-blue" href="#contact" data-e="moc.liamg|r8f88j">Let's talk</a>
+  </div>
+</header>
+
+<section class="hero">
+  <video class="hero-bg hero-bg-d" muted loop playsinline preload="none" poster="assets/hero/hero-poster-v9.jpg" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+    <source src="assets/hero/hero-loop-v9.webm" type="video/webm">
+    <source src="assets/hero/hero-loop-v9.mp4" type="video/mp4">
+  </video>
+  <video class="hero-bg hero-bg-m" muted loop playsinline preload="none" poster="assets/hero/hero-poster-v9-mobile.jpg" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+    <source src="assets/hero/hero-loop-v9-mobile.webm" type="video/webm">
+    <source src="assets/hero/hero-loop-v9-mobile.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <h1>Psychologist<br>AI Builder</h1>
+    <p><strong>School psychologist building and testing AI tools for kids' safety and privacy.</strong> Eleven years at San Francisco Unified School District. I build tools that automate workflows my department ran by hand for years: roster checks, referral files and packets, inbox routing, and panel scheduling. I also build and evaluate local AI decision support tools grounded in domain expertise.</p>
+    <a class="btn btn-ghost" href="Jaafar_El_Tassa_Resume.pdf">Resume (PDF)</a>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- ============ TOOLS ============ -->
+  <section class="block">
+    <div class="block-head">
+      <h2>Tools</h2>
+      <span class="keep">All built with AI coding agents. No student data shown.</span>
+    </div>
+
+    <article class="entry">
+      <div class="when current">In use</div>
+      <div class="role">
+        <h3>Roster reconciliation</h3>
+        <p class="org">Python</p>
+      </div>
+      <ul class="points">
+        <li><strong>The problem.</strong> Every week we receive external .xlsx spreadsheets of provider assignments. Checking them against internal .gsheet rosters by hand has been the slow and tedious standard practice for years.</li>
+        <li><strong>What it does.</strong> Compares external .xlsx with internal .gsheet (4,900 rows, 460 matched students), surfacing every important flag and helpful information including new assignments, provider transfers, and more in one click.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <div class="when current">In use</div>
+      <div class="role">
+        <h3>Referral file pipeline</h3>
+        <p class="org">Python</p>
+      </div>
+      <ul class="points">
+        <li><strong>The problem.</strong> Referral cover sheets arrive as encrypted .docx files. Each one has to be manually opened, converted, and renamed before it can be filed - another slow and tedious workflow practiced for over a decade.</li>
+        <li><strong>What it does.</strong> Watches an input folder and runs on its own via macOS LaunchAgents: decrypts each file, auto-converts to .pdf, strips hidden metadata, and renames it. Runs 10 referrals a week. Dry-run tested and fail checkers active.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <div class="when current">In use</div>
+      <div class="role">
+        <h3>Referral packet builder</h3>
+        <p class="org">Python</p>
+      </div>
+      <ul class="points">
+        <li><strong>The problem.</strong> A mental health services referral for a contractor assignment means pulling several documents from SaaS systems, putting them in order, protecting the file, and writing the email - another slow and tedious workflow practiced for over a decade.</li>
+        <li><strong>What it does.</strong> Sorts and reads the downloaded documents, merges them into one password-protected .pdf packet, and writes an email draft ready for human approval, sent with one click. It runs on 5 to 10 real referrals a week.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <div class="when current">In use</div>
+      <div class="role">
+        <h3>Shared inbox router</h3>
+        <p class="org">Google Apps Script</p>
+      </div>
+      <ul class="points">
+        <li><strong>The problem.</strong> The department's shared ERMHS inbox used a simple filter that forwarded every email to everyone on the team - creating a hard-to-track info dump where everyone got everything, including mail meant for one person.</li>
+        <li><strong>What it does.</strong> Gmail filters label each email the moment it arrives. Appointments and calendar invites are auto-archived. Everything else goes to a queue. Every 5 minutes a script labels and sends each queued email to one destination. It routes about 20 to 40 emails a week for a team of 7.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <div class="when current">In use</div>
+      <div class="role">
+        <h3>Panel rotation scheduler</h3>
+        <p class="org">Python and Google Apps Script</p>
+      </div>
+      <ul class="points">
+        <li><strong>The problem.</strong> A full year of consultation panel sessions has to be staffed from 108 people under eligibility, availability, and equity rules, which is hard to do by hand. For years the reminder emails were also sent by hand, as cancellations and last-minute changes kept the schedule moving.</li>
+        <li><strong>What it does.</strong> Models the rules and solves a full-year rotation that meets all of them. Then runs unattended across 69 sessions. It sets up the calendars and sends one reminder 24 hours before sessions to panelists and presenters, with the information each needs to prep for that session's cases. Each reminder is built with the latest schedule at send time so it reflects cancellations and late changes.</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ============ CONSULT PANEL ============ -->
+  <section class="block">
+    <div class="block-head">
+      <h2>Projects</h2>
+      <span>In development</span>
+    </div>
+
+    <article class="entry">
+      <div class="when current">Since 2026</div>
+      <div class="role">
+        <h3>Consult Panel</h3>
+        <p class="org">Builder</p>
+      </div>
+      <ul class="points">
+        <li><strong>A local-first decision-support tool for psychologists.</strong> <a href="https://github.com/888bold888/criterium-methodology">Evaluation methodology</a></li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ============ WRITING ============ -->
+  <section class="block">
+    <div class="block-head">
+      <h2>Writing</h2>
+      <span>Short pieces</span>
+    </div>
+
+    <article class="entry">
+      <div class="when">2026</div>
+      <div class="role">
+        <h3>Rubrics, Not Answer Keys</h3>
+        <p class="org">Testing AI for school psychology</p>
+      </div>
+      <ul class="points">
+        <li><strong>How I design evals for AI decision support:</strong> psychologist-built rubrics, recall-weighted scoring, paired-case bias checks, and scoring plans written before any results. <a href="writing/rubrics-not-answer-keys.html">Read it</a></li>
+      </ul>
+    </article>
+  </section>
+
+</main>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="talk">Let's<br> talk</h2>
+    <div class="contact-links">
+      <a class="email" href="#contact" data-e="moc.liamg|r8f88j" data-show>Email me</a>
+      <noscript><span class="note">My email address is in the résumé PDF.</span></noscript>
+      <a class="btn btn-solid" href="Jaafar_El_Tassa_Resume.pdf">Download résumé</a>
+      <span class="creds">California PPS Credential, School Psychology &nbsp;&middot;&nbsp; California LEP in progress (exam window opens December 2026)<br>English, Mandarin, Portuguese</span>
+      <span class="meta">San Francisco, CA &nbsp;&middot;&nbsp; <a href="https://linkedin.com/in/eltassa">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="https://github.com/888bold888">GitHub</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Builds the email links in the browser so the address never appears in the page source.
+  document.querySelectorAll('[data-e]').forEach(function (a) {
+    var addr = a.getAttribute('data-e').split('').reverse().join('').replace('|', '@');
+    a.href = 'mailto:' + addr;
+    if (a.hasAttribute('data-show')) a.textContent = addr;
+  });
+</script>
+<script src="assets/hero/hero-ink-v9.js"></script>
+</body>
+</html>

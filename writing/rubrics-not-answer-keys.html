@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rubrics, Not Answer Keys: Testing AI for School Psychology · Jaafar El Tassa</title>
+<meta name="description" content="How a school psychologist designs evals for AI decision support: psychologist-built rubrics, recall-weighted scoring, paired-case bias checks, and plans written before results.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rubrics, Not Answer Keys: Testing AI for School Psychology">
+<meta property="og:description" content="How a school psychologist designs evals for AI decision support.">
+<meta name="theme-color" content="#3D39AC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%233D39AC'/%3E%3Cpath d='M38 14v26c0 7-4 11-11 11-3 0-6-1-8-2l2-6c2 1 4 1 5 1 3 0 4-2 4-5V14z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../fonts.css">
+<style>
+  :root {
+    --blue: #3D39AC;
+    --blue-dark: #302D86;
+    --ink: #0A0A0A;
+    --body: #262626;
+    --muted: #5A5A5A;
+    --faint: #6A6A6A;
+    --rule: #E4E4E4;
+    --paper: #FFFFFF;
+    --footer: #F4F4F4;
+    --pad: 56px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  a { color: var(--blue); }
+  a:hover { color: var(--blue-dark); }
+  a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--pad); }
+
+  /* Top bar */
+  .top { border-bottom: 1px solid var(--rule); }
+  .top .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; padding-bottom: 28px; gap: 16px; }
+  .wordmark { font-family: 'Anton', Impact, sans-serif; font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; }
+  .btn { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+  .btn-blue { padding: 14px 24px; background: var(--blue); color: #FFFFFF; }
+  .btn-blue:hover { background: var(--blue-dark); color: #FFFFFF; }
+  .btn-solid { padding: 14px 24px; background: var(--blue); color: #FFFFFF; }
+  .btn-solid:hover { background: var(--blue-dark); color: #FFFFFF; }
+
+  /* Banner */
+  .hero { background: var(--blue); color: #FFFFFF; }
+  .hero .wrap { padding-top: 84px; padding-bottom: 76px; display: flex; flex-direction: column; gap: 40px; }
+  .hero h1 { margin: 0; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: min(180px, calc((100vw - 112px) / 5.6)); line-height: 1.02; letter-spacing: 0.005em; text-transform: uppercase; }
+  .hero p { margin: 0; max-width: 800px; font-size: 21px; line-height: 1.6; color: #E4E3F5; border-top: 1px solid #7A77C5; padding-top: 32px; }
+
+  /* Sections */
+  .block { padding-top: 52px; }
+  .block:first-child { padding-top: 76px; }
+  .block-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 16px; }
+  .block-head h2 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .block-head span { font-size: 14px; font-weight: 500; color: var(--faint); }
+
+  /* Entries */
+  .entry { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; padding: 46px 0; border-bottom: 1px solid var(--rule); }
+  .entry:last-child { border-bottom: 0; }
+  .when { grid-column: span 2; font-size: 15px; font-weight: 600; letter-spacing: 0.04em; color: var(--faint); }
+  .when.current { color: var(--blue); }
+  .role { grid-column: span 4; padding-right: 24px; }
+  .role h3 { margin: 0 0 10px; font-size: 27px; font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; }
+  .org { margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); }
+  .points { grid-column: span 6; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; font-size: 19px; line-height: 1.62; color: var(--body); }
+  .points strong { font-weight: 700; color: var(--ink); }
+
+  /* Contact */
+  .contact { margin-top: 40px; background: var(--footer); }
+  .contact .wrap { padding-top: 64px; padding-bottom: 64px; display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+  .talk { margin: 0; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 82px; line-height: 0.92; letter-spacing: 0.01em; text-transform: uppercase; color: var(--blue); }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; align-items: flex-end; }
+  .email { font-size: 23px; font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--blue); padding-bottom: 4px; }
+  .meta { margin-top: 8px; font-size: 16px; color: var(--muted); }
+  .note { font-size: 14px; color: var(--muted); }
+
+  /* Phone and narrow tablet */
+  @media (max-width: 860px) {
+    :root { --pad: 20px; }
+    .top .wrap { padding-top: 16px; padding-bottom: 16px; }
+    .wordmark { font-size: 16px; }
+    .btn-blue { padding: 15px 18px; font-size: 11px; }
+    .hero .wrap { padding-top: 44px; padding-bottom: 40px; gap: 28px; }
+    .hero h1 { font-size: calc((100vw - 40px) / 5.6); line-height: 1.02; }
+    .hero p { font-size: 18px; padding-top: 24px; }
+    .block, .block:first-child { padding-top: 40px; }
+    .block + .block { padding-top: 28px; }
+    .block-head { padding-bottom: 12px; }
+    .block-head h2 { font-size: 17px; }
+    .block-head span { display: none; }
+    .entry { display: flex; flex-direction: column; gap: 12px; padding: 30px 0; }
+    .when { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .role { padding-right: 0; }
+    .role h3 { font-size: 24px; margin-bottom: 12px; }
+    .org { font-size: 15px; }
+    .points { gap: 14px; font-size: 17px; margin-top: 6px; }
+    .contact .wrap { flex-direction: column; align-items: stretch; gap: 20px; padding-top: 40px; padding-bottom: 40px; }
+    .talk { font-size: 52px; }
+    .talk br { display: none; }
+    .contact-links { align-items: flex-start; gap: 20px; }
+    .email { font-size: 18px; }
+    .btn-solid { align-self: stretch; text-align: center; font-size: 12px; padding: 17px 20px; }
+    .meta { margin-top: 0; font-size: 15px; }
+  }
+
+  /* ---- Added for the new sections (same tokens as above) ---- */
+  .hero p strong { color: #FFFFFF; font-weight: 600; }
+  .hero a { color: #FFFFFF; }
+  .hero a:hover { color: #E4E3F5; }
+  .hero-row { display: flex; align-items: center; justify-content: space-between; gap: 32px; max-width: 800px; }
+  .hero p.impact { border-top: 0; padding-top: 0; font-size: 17px; font-weight: 600; line-height: 1.5; color: #FFFFFF; }
+  .creds { font-size: 16px; line-height: 1.5; color: var(--muted); text-align: right; }
+  .flow { grid-column: 3 / -1; list-style: none; margin: 36px 0 0; padding: 0; display: flex; gap: 40px; }
+  .flow li { position: relative; flex: 1; border-top: 2px solid var(--ink); padding-top: 12px; font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--body); }
+  .flow li:not(:last-child)::after { content: "\2192"; position: absolute; right: -28px; top: 10px; font-size: 18px; font-weight: 700; color: var(--blue); }
+  .flow li.person { border-top-color: var(--blue); color: var(--blue); }
+  .flow-note { grid-column: 3 / -1; margin: 14px 0 0; font-size: 15px; font-weight: 600; color: var(--muted); }
+  .flow-note b { color: var(--blue); font-weight: 600; }
+  .routes-head { grid-column: 3 / -1; margin: 30px 0 0; font-size: 15px; font-weight: 600; color: var(--blue); }
+  .routes { grid-column: 3 / -1; list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .routes li { border-top: 2px solid var(--blue); padding-top: 12px; font-size: 15px; line-height: 1.4; color: var(--muted); }
+  .routes li b { display: block; font-weight: 600; color: var(--ink); }
+  @media (max-width: 860px) {
+    .flow { flex-direction: column; gap: 26px; margin-top: 18px; }
+    .flow li:not(:last-child)::after { content: "\2193"; right: auto; left: 0; top: auto; bottom: -25px; }
+    .flow-note { margin-top: 10px; }
+    .routes { grid-template-columns: 1fr; gap: 20px; }
+    .routes-head { margin-top: 24px; }
+    .hero-row { flex-direction: column; align-items: stretch; gap: 20px; }
+    .hero p.impact { font-size: 16px; padding-top: 0; }
+    .creds { font-size: 15px; text-align: left; }
+  }
+
+  /* ---- Piece page (same tokens as the home page) ---- */
+  .wordmark { color: var(--ink); text-decoration: none; }
+  .wordmark:hover { color: var(--blue); }
+  .hero .kicker { margin: 0; border-top: 0; padding-top: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #E4E3F5; }
+  .hero h1.piece-title { font-size: min(84px, calc((100vw - 112px) / 9)); line-height: 1.05; max-width: 1000px; }
+  .piece { max-width: 760px; padding-top: 64px; padding-bottom: 24px; font-size: 19px; line-height: 1.62; color: var(--body); }
+  .piece p { margin: 0 0 22px; }
+  .piece strong { font-weight: 700; color: var(--ink); }
+  .piece ul { margin: 0 0 22px; padding-left: 22px; }
+  .piece li { margin-bottom: 8px; }
+  .piece .status { border-top: 2px solid var(--ink); padding-top: 22px; margin-top: 36px; }
+  .piece .back { font-size: 15px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+  @media (max-width: 860px) {
+    .hero h1.piece-title { font-size: calc((100vw - 40px) / 8); }
+    .hero .kicker { font-size: 13px; }
+    .piece { padding-top: 40px; font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="wordmark" href="../">Jaafar El Tassa</a>
+    <a class="btn btn-blue" href="#contact">Let's talk</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Writing &nbsp;&middot;&nbsp; 2026</p>
+    <h1 class="piece-title">Rubrics, Not Answer Keys: Testing AI for School Psychology</h1>
+  </div>
+</section>
+
+<main class="wrap">
+<article class="piece">
+<p>Some of the hardest calls in my job are special education eligibility decisions. A team makes them, after weeks of testing, observation, and talks with the family and teachers. I&rsquo;ve been building a local-first decision-support tool for psychologists, meant to help that team check its reasoning. It does not make the call. Before a tool like that gets near a real case, I need a way to know whether it helps. This is how I set that up.</p>
+<p><strong>Start with where the data lives.</strong> Student records are protected under FERPA and California privacy law. So the tool runs on the psychologist&rsquo;s own laptop, and case material never goes to a cloud service. Test cases stay on the device too, or they&rsquo;re synthetic. That choice limits which models I can use and how fast they run, and the evaluation has to live with the same limits.</p>
+<p><strong>Don&rsquo;t ask a bigger model to grade the answer.</strong> For expert reasoning, a model good enough to judge an answer is about as hard to build as the model giving it. Chai Asawa made this point in his AI Engineer World&rsquo;s Fair talk on how Abridge evaluates medical decision support. The reference has to come from people who do the work.</p>
+<p><strong>Use rubrics, not answer keys.</strong> Two good psychologists can reach the same decision by different routes. So the reference for each case is a list of things a sound analysis should cover, not one correct paragraph. The tool is scored on whether its output covers those things.</p>
+<p><strong>Build each rubric with four people.</strong> Two psychologists write rubrics on their own. A third settles where they disagree. A fourth, who wrote none of it, checks the final version. I adapted this from the process Abridge has described in public. One rule sits on top: AI never writes the answer key. The system being tested can&rsquo;t author its own reference.</p>
+<p><strong>Weight recall.</strong> Missing a real consideration about a child costs more than raising one the team can dismiss in a few seconds. So scoring favors recall. I still report precision, and I say which number matters more instead of hiding both inside one blended score.</p>
+<p><strong>Check for bias with paired cases.</strong> Special education has a long, litigated history of racial and linguistic disproportionality. So the evaluation includes pairs of synthetic cases that are identical except for gender, ethnicity, or home language. If the output changes when only that detail changes, that&rsquo;s a signal worth reading. Models are noisy, though. So before reading any single difference as bias, I run the same case many times to see how much the output moves on its own. That rule is written down before any results come in.</p>
+<p><strong>Write the plan down before measuring.</strong> Scoring rules, pass bars, and expected failure modes go in a public document before results exist. It&rsquo;s the same reason medical trials pre-register. If I pick the metrics after I see the numbers, I can make almost anything look good.</p>
+<p><strong>Keep a person in charge, on purpose.</strong> Federal special education law makes eligibility a team decision. The tool shows evidence before conclusions, and a psychologist always makes the call. The evaluation asks whether the team&rsquo;s reasoning gets better, not whether the tool could replace the team.</p>
+<p><strong>Questions any school team can ask about an AI tool:</strong></p>
+<ul>
+  <li>Who wrote the reference it was tested against, and were they psychologists?</li>
+  <li>Was the scoring plan written before the results?</li>
+  <li>Was it checked for different answers across groups of students?</li>
+  <li>Where does student data go?</li>
+  <li>What is it not meant to do, and is that written where users will see it?</li>
+</ul>
+<p class="status">Where this stands: the method is public and the tool is a prototype. There are no pilot results. If you&rsquo;re a school psychologist and want to help build rubrics, I&rsquo;d like to hear from you.</p>
+<p>Method: <a href="https://github.com/888bold888/criterium-methodology">github.com/888bold888/criterium-methodology</a></p>
+<p><a class="back" href="../">&larr; Back to home</a></p>
+</article>
+</main>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="talk">Let's<br> talk</h2>
+    <div class="contact-links">
+      <a class="email" href="#contact" data-e="moc.liamg|r8f88j" data-show>Email me</a>
+      <noscript><span class="note">My email address is in the résumé PDF.</span></noscript>
+      <a class="btn btn-solid" href="../Jaafar_El_Tassa_Resume.pdf">Download résumé</a>
+      <span class="creds">California PPS Credential, School Psychology &nbsp;&middot;&nbsp; California LEP in progress (exam window opens December 2026)<br>English, Mandarin, Portuguese</span>
+      <span class="meta">San Francisco, CA &nbsp;&middot;&nbsp; <a href="https://linkedin.com/in/eltassa">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="https://github.com/888bold888">GitHub</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Builds the email links in the browser so the address never appears in the page source.
+  document.querySelectorAll('[data-e]').forEach(function (a) {
+    var addr = a.getAttribute('data-e').split('').reverse().join('').replace('|', '@');
+    a.href = 'mailto:' + addr;
+    if (a.hasAttribute('data-show')) a.textContent = addr;
+  });
+</script>
+</body>
+</html>
